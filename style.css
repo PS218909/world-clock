@@ -1,0 +1,124 @@
+:root {
+    --outradius: 200px;
+    --inradius: 180px;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(45deg, red, blue);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-zone {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: aliceblue;
+}
+
+.container {
+    margin: auto;
+    width: 80%;
+}
+
+.outer-border {
+    font-size: 28px;
+    margin: auto;
+    width: var(--outradius);
+    height: var(--outradius);
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+.outer-border .hand {
+    background-color: black;
+    width: 1px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    top: 32%;
+    transform-origin: top;
+}
+
+.outer-border .point {
+    background-color: black;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    left: 49.8%;
+    top: 31.3%;
+    transform-origin: top;
+}
+
+.outer-border .hour-hand {
+    background-color: black;
+    width: 2.4px!important;
+    height: 30px!important;
+}
+
+.outer-border .minute-hand {
+    background-color: black;
+    width: 1.5px!important;
+    height: 50px!important;
+}
+
+.outer-border .second-hand {
+    background-color: black;
+    width: 1px;
+    height: 60px;
+}
+
+
+.inner-border {
+    margin: auto;
+    margin-top: 9px;
+    width: var(--inradius);
+    height: var(--inradius);
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.inner-border .time-text {
+    position: absolute;
+    width: var(--inradius);
+    height: var(--inradius);
+    text-align: center;
+}
+
+.left {
+    text-align: start;
+    width: 49%;
+}
+.right {
+    width: 49%;
+    text-align: end;
+}
+
+.outer-border .inps select {
+    color: white;
+    font-size: larger;
+    width: var(--inradius);
+    word-wrap: normal;
+    border: none;
+    outline: 0ch;
+    background-color: transparent;
+    border-bottom: 3px solid #000;
+}
+
+option {
+    color: black;
+}
+
+select:focus {
+    border: none;
+    outline: 0ch;
+    border-bottom: 4px solid gray;
+}
+
+.inps {
+    margin: auto;
+    margin-top: 30px;
+}
