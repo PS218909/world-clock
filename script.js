@@ -364,23 +364,33 @@ for (var j =0;j<TimeZones.length;j++) {
 document.getElementsByTagName("datalist")[0].innerHTML = s;
 
 document.getElementsByTagName("input")[0].addEventListener('change', function (e) {
-    console.log(i);
     try {
         i = TimeZones.lastIndexOf(this.value);
     } catch {
+
     }
 })
 
 function rotate6deg() {
-    var _date = new Date().toLocaleString("en-US", {timeZone: TimeZones[i]});
-    var date = new Date(_date);
-    sec = date.getSeconds()+(new Date().getMilliseconds()/1000);
+    var __date = new Date()
+    var _date = __date.toLocaleString();
+    var z = _date.split(", ")
+    var m = z[0].split("/")[0];
+    var d = z[0].split("/")[1];
+    var y = z[0].split("/")[2]
+    var H, M, S = z[1].split(" ")[0].split(":");
+    var H = z[1].split(" ")[0].split(":")[0];
+    var M = z[1].split(" ")[0].split(":")[1];
+    var S = z[1].split(" ")[0].split(":")[2];
+    var date = new Date(y, m, d, H, M, S);
+    sec = date.getSeconds()+(__date.getMilliseconds()/1000);
     min = date.getMinutes()+(date.getSeconds()/60);
     hour = date.getHours()+(date.getMinutes()/60);
+    document.getElementsByClassName("digi")[0].textContent = H + ":" + M + ":" + S;
     document.getElementsByClassName("second-hand")[0].style.transform = "rotate("+((sec*6)+180)+"deg)";
     document.getElementsByClassName("minute-hand")[0].style.transform = "rotate("+((min*6)+180)+"deg)";
-    document.getElementsByClassName("hour-hand")[0].style.transform = "rotate("+((hour*6)+180)+"deg)";
+    document.getElementsByClassName("hour-hand")[0].style.transform = "rotate("+((hour*6)+90)+"deg)";
 }
 
 
-setInterval(rotate6deg, 10);
+setInterval(rotate6deg, 1);

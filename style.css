@@ -53,6 +53,17 @@ body {
     transform-origin: top;
 }
 
+.outer-border .digi {
+    color: white;
+    width: max-content;
+    height: max-content;
+    position: absolute;
+    border: 1px black solid;
+    left: 46.7%;
+    top: 35.6%;
+    transform-origin: top;
+}
+
 .outer-border .hour-hand {
     background-color: black;
     width: 2.4px!important;
