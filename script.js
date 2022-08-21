@@ -3,7 +3,7 @@ var i = 0;
 for(var i = 0;i<t.length;i++) {
     t[i].style.transform = "rotate("+i*(360/12)+"deg)";
 }
-
+i = 0;
 var TimeZones = [
     'Asia/Kolkata',
     'Europe/Andorra',
@@ -372,25 +372,21 @@ document.getElementsByTagName("input")[0].addEventListener('change', function (e
 })
 
 function rotate6deg() {
-    var __date = new Date()
-    var _date = __date.toLocaleString();
+    var __date = new Date();
+    var _date = __date.toLocaleString("en-US", {timeZone: TimeZones[i]});
     var z = _date.split(", ")
     var m = z[0].split("/")[0];
     var d = z[0].split("/")[1];
-    var y = z[0].split("/")[2]
-    var H, M, S = z[1].split(" ")[0].split(":");
+    var y = z[0].split("/")[2];
+    // var H, M, S = z[1].split(" ")[0].split(":");
     var H = z[1].split(" ")[0].split(":")[0];
     var M = z[1].split(" ")[0].split(":")[1];
     var S = z[1].split(" ")[0].split(":")[2];
-    var date = new Date(y, m, d, H, M, S);
-    sec = date.getSeconds()+(__date.getMilliseconds()/1000);
-    min = date.getMinutes()+(date.getSeconds()/60);
-    hour = date.getHours()+(date.getMinutes()/60);
     document.getElementsByClassName("digi")[0].textContent = H + ":" + M + ":" + S;
-    document.getElementsByClassName("second-hand")[0].style.transform = "rotate("+((sec*6)+180)+"deg)";
-    document.getElementsByClassName("minute-hand")[0].style.transform = "rotate("+((min*6)+180)+"deg)";
-    document.getElementsByClassName("hour-hand")[0].style.transform = "rotate("+((hour*6)+90)+"deg)";
+    document.getElementsByClassName("second-hand")[0].style.transform = "rotate("+(S*6+180)+"deg)";
+    document.getElementsByClassName("minute-hand")[0].style.transform = "rotate("+(180+M*6+S/60)+"deg)";
+    document.getElementsByClassName("hour-hand")[0].style.transform = "rotate("+(H*30+180+(M/15)*6)+"deg)";
 }
 
 
-setInterval(rotate6deg, 1);
+setInterval(rotate6deg, 1000);
